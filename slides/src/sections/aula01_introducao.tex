@@ -1,0 +1,297 @@
+\begin{frame}[fragile]{Informações Gerais da Disciplina}
+    \begin{center}
+        \begin{tabular}{@{}ll@{}}
+            \toprule
+            \textbf{Nome} & Análise e Projeto de Algoritmos \\
+            \textbf{Código} & SISB014 \\
+            \textbf{Semestre} & 5º \\
+            \textbf{Carga Horária} & 80h \\
+            \textbf{PPC} & 03/2018 \\
+            \textbf{Turma} & 2019.2 \\
+            \textbf{Horário} & Sexta, 18:10 -- 21:40 \\
+            \textbf{Sala} & 4 \\
+            \textbf{Lista de discussão} & Google Groups: \href{https://groups.google.com/forum/#!forum/sisb014_20192}{\alert{sisb014\_20192}} \\
+            \textbf{Repositório} & GitHub: \href{https://github.com/theagoliveira/sisb014_20192}{\alert{theagoliveira/sisb014\_20192}} \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Cronograma}
+    \begin{center}
+        \begin{tabular}{@{}r@{/}r@{/}rll@{}}
+            \toprule
+            \multicolumn{4}{@{}l}{\textbf{Datas importantes}} \\
+            \midrule
+            22 & 11 & 2019 & \textit{Possível} dia da \alert{AB1} \\
+            23 & 11 & 2019 & Prazo final para digitação da \alert{AB1} \\
+            14 & 02 & 2020 & \textit{Possível} dia da \alert{AB2} \\
+            17 & 02 & 2020 & Prazo final para digitação da \alert{AB2} \\
+            17--22 & 02 & 2020 & Período de \alert{reavaliação} \\ 
+            27--29 & 02 & 2020 & Período de \alert{provas finais} \\ 
+            \bottomrule
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Ementa}
+    \begin{itemize}
+        \item Conceitos básicos: motivação e solução de problemas; critérios de análise; correção e eficiência
+        \item Análise de complexidade de algs.: custo; tempo de processamento; operações elementares; função de complexidade; classes de problemas; comparação de algs.
+        \item Comportamento assintótico de funções: dominação assintótica; big O; theta; omega
+        \item Técnicas de análise de algs.: equações de recorrência; teorema mestre
+        \item Paradigmas de projeto de algs.: indução matemática; recursividade; algs. tentativa e erro; divisão e conquista; balanceamento; programação dinâmica; algs. gulosos e aproximados
+        \item Análise de algs. de busca e ordenação; grafos; conhecidos
+        \item Tratamento de problemas NP-completos
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Bibliografia}
+    \huge
+    SKIENA, S. S. The Algorithm Design Manual
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \huge
+    \metroset{block=fill}
+    \begin{block}{\huge Algoritmo}
+        Procedimento para realizar uma determinada tarefa
+    \end{block}
+    
+    \bigskip
+    
+    \begin{block}{\huge Programa de computador}
+        Algoritmo + estruturas de dados
+    \end{block}
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \huge
+    Um algoritmo resolve um \textbf{problema}. O problema é especificado pela \textbf{instância}.
+    
+    \bigskip
+    
+    problema $\neq$ instância
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \Large
+    
+    \textbf{Exemplo}: Ordenação
+    
+    \textbf{Entrada}: Uma sequência de $n$ elementos $a_1, \ldots, a_n$
+    
+    \textbf{Saída}: A permutação (reordenação) da sequência de entrada de forma que $a^{'}_{1} \leq a^{'}_{2} \leq \cdots \leq a^{'}_{n-1} \leq a^{'}_{n}$
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \Large
+
+    \textbf{Instâncias}
+    
+    \textbf{Entrada 1}: \{``João'', ``Thiago'', ``Maria'', ``Ana''\}
+    
+    \textbf{Entrada 2}: \{100, 34, 57, 943, 48\}
+    
+    O algoritmo transforma qualquer possível instância na saída desejada.
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \huge
+    \textbf{Exemplo}: \textit{insertion sort}
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \huge
+    
+    Três propriedades de um bom algoritmo:
+    
+    \begin{itemize}
+        \only<1>{\item \huge Correto}
+        \only<2>{\item \huge \alert{Correto}}
+        \item \huge Eficiente
+        \item \huge Fácil de implementar
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \huge
+    Correção nem sempre é óbvia!
+    
+    \onslide<2->{Correção requer uma \alert{prova}.}
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \huge
+    \textbf{Exemplo}: Otimização de caminho de um robô
+    
+    \Large
+    \textbf{Entrada}: Conjunto de pontos em um plano
+
+    \textbf{Saída}: Menor caminho fechado que passa por todos os pontos
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Design de Algoritmos}
+    \Large Heurística do vizinho mais próximo
+    \normalsize
+    \begin{lstlisting}
+VizinhoMaisPróximo($P$)
+  Escolha um ponto inicial $p0$ de $P$ e o visite
+  $p$ = $p_0$
+  $i$ = 0
+  Enquanto existirem pontos não visitados
+    $i = i + 1$
+    Seja $p_i$ o ponto mais próximo não visitado de $p_{i-1}$
+    Visite $p_i$
+  Retorne para $p_0$ a partir de $p_{n-1}$
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Design de Algoritmos}
+    \Large Heurística do par mais próximo
+    \normalsize
+    \begin{lstlisting}
+ParMaisPróximo($P$)
+  Seja $n$ o número de pontos no conjunto $P$
+  Para $i = 1$ até $n - 1$ faça
+    $d = \infty$
+    Para cada par $(s, t)$ de pontas em cadeias distintas
+        Se $dist(s, t) \leq d$, então $s_m = s$ e $t_m = t$ e $d = dist(s, t)$
+    Conecte $(s_m, t_m)$
+  Conecte as duas pontas restantes
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Design de Algoritmos}
+    \begin{lstlisting}
+PCVÓtimo($P$)
+  $d = \infty$
+  Para cada $n!$ permutações $P_i$ do conjunto $P$
+    Se $(custo(P_i) \leq d)$, então $d = custo(P_i)$ e $P_{min} = P_i$
+  Retorne $P_{min}$
+    \end{lstlisting}
+    
+    \onslide<2->{\large 20 pontos: só 2.432.902.008.176.640.000 permutações}
+    
+    \bigskip
+    
+    \onslide<3->{\large 1000 pontos: ??????}
+    
+    \bigskip
+    
+    \onslide<3->{\large \textbf{PCV}: Problema do Caixeiro-viajante}
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \huge
+    \textbf{Algoritmos} \alert{sempre} fornecem o resultado correto, \textbf{heurísticas} fazem um bom trabalho, porém sem garantias de que está correto.
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \huge
+    \textbf{Exemplo}: Problema de agendamento
+    
+    \Large
+    \textbf{Entrada}: Conjunto $K$ de $n$ intervalos em uma linha
+
+    \textbf{Saída}: Maior conjunto de intervalos de $K$ que não se sobrepõem
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Design de Algoritmos}
+    \begin{lstlisting}
+PrimeiroTrabalho($K$)
+  Aceite o primeiro trabalho $t$ de $K$ que não se sobrepõe
+  --> a outro trabalho aceito
+  Repita até que não sobrem trabalhos
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Design de Algoritmos}
+    \begin{lstlisting}
+TrabalhoMaisCurto($K$)
+  Enquanto $K$ não for vazio faça
+    Aceite o trabalho $t$ mais curto em $K$
+    Exclua $t$ e qualquer outro trabalho onde há
+    --> sobreposição com $t$
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Design de Algoritmos}
+    \begin{lstlisting}
+AgendamentoExaustivo($K$)
+  $j = 0$
+  $S_{max} = 0$
+  Para cada um dos $2^n$ subconjuntos $S_i$ de intervalos
+    Se $S_i$ não tem sobreposições e $tam(S_i) > j$
+      então $j = tam(S_i)$ e $S_{max} = S_i$
+  Retorne $S_i$
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Introdução ao Design de Algoritmos}
+    \begin{lstlisting}
+AgendamentoÓtimo($K$)
+  Enquanto $K$ não for vazio faça
+    Aceite o trabalho $t$ de $K$ que termina mais cedo
+    Exclua $t$ e qualquer outro trabalho onde há
+    --> sobreposição com $t$
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \huge
+    Algoritmos aparentemente razoáveis podem estar incorretos. A correção de um algoritmo é uma propriedade que precisa ser demonstrada \textbf{cuidadosamente}.
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \Large
+    Algoritmos podem ser expressados através de:
+    
+    \begin{itemize}
+        \item \Large Texto
+        \item \Large Pseudocódigo
+        \item \Large Programa real
+    \end{itemize}
+    
+    \onslide<2->{\huge O coração do algoritmo é uma \textbf{idéia}.}
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \Large
+    Especificação de problemas tem duas partes:
+    
+    \begin{enumerate}
+        \item \Large O conjunto permitido de instâncias de entrada
+        \item \Large A propriedades exigidas na saída
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \huge
+    Outro lado da moeda: Demonstrando \textbf{incorreção} com contra-exemplos
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \Large Propriedades importantes de contra-exemplos:
+    
+    \begin{itemize}
+        \item \Large Verificabilidade
+        \begin{itemize}
+            \Large
+            \item Calcular a resposta
+            \item Mostrar uma resposta melhor
+        \end{itemize}
+        \item \Large Simplicidade
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+    \Large Algumas estratégias:
+    
+    \begin{itemize}
+        \Large
+        \item Pense pequeno
+        \item Pense exaustivamente
+        \item Procure extremos (grande/pequeno, esquerda/direita, poucos/muitos, perto/longe)
+    \end{itemize}
+\end{frame}
