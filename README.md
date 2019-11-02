@@ -80,7 +80,7 @@
 | ~~03~~ | ~~11/10/2019~~ |                                             |
 | ~~04~~ | ~~18/10/2019~~ |                                             |
 | 05     | 25/10/2019     | Conceitos básicos, exercícios sobre indução |
-| 06     | 01/11/2019     |                                             |
+| 06     | 01/11/2019     | Modelo RAM, notação big-oh e exercícios     |
 | 07     | 08/11/2019     |                                             |
 |        | 15/11/2019     | Feriado                                     |
 | 08     | 22/11/2019     | Possível AB1                                |
@@ -105,3 +105,4 @@
 - [Data Structure Visualizations (David Galles, University of San Francisco)](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
 - [Leetcode](https://leetcode.com/)
 - [HackerRank](https://www.hackerrank.com/)
+- [Online Judge](https://onlinejudge.org/)
