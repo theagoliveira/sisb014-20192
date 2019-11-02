@@ -1,0 +1,273 @@
+\documentclass[10pt]{beamer}
+
+\input{general/packages.tex}
+\input{general/configs.tex}
+\input{general/info.tex}
+
+\subtitle{Aula 2}
+\date{01 de novembro de 2019}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Introdução ao Design de Algoritmos}
+  \huge
+
+  Três propriedades de um bom algoritmo:
+
+  \begin{itemize}
+      \item \huge Correto
+      \only<1>{\item \huge Eficiente}
+      \only<2>{\item \huge \alert{Eficiente}}
+      \item \huge Fácil de implementar
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge Precisamos de ferramentas que sejam independentes de \textbf{linguagem} ou \textbf{máquina}
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge
+  \begin{itemize}
+    \item Modelo \textbf{RAM} (\textit{Random Access Machine})
+    \item Análise assintótica de complexidade no pior caso (notação \textbf{Big-Oh})
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge \textbf{Modelo RAM}
+
+  \Large
+  \begin{itemize}
+    \item Operações simples levam \textbf{um ciclo de tempo} para serem realizadas (\texttt{+} \texttt{-} \texttt{*} \texttt{/} \texttt{if} \texttt{call})
+    \item Laços e subrotinas \textbf{não são operações simples}, e sim várias operações simples compostas
+    \item Cada acesso à memória leva \textbf{um ciclo de tempo} para ser completado e a memória é considerada \textbf{infinita}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge Simples, porém funciona \textbf{muito bem} na prática
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge Complexidade de \textbf{melhor} caso, \textbf{pior} caso e caso \textbf{médio}
+
+  \vfill
+
+  \Large Para entender um algoritmo, precisamos analisar o que acontece em \textbf{todas as instâncias}
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge
+  \begin{itemize}
+    \item \textbf{Melhor}: número de ciclos mínimo
+    \item \textbf{Médio}: número médio de ciclos de todas as instâncias
+    \item \textbf{Pior}: número de ciclos máximo \onslide<2>{-- \textbf{Mais útil!}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge Cada caso define uma \textbf{função de tempo $\times$ tamanho do problema}
+
+  \vfill
+
+  Usamos a Notação \textbf{Big-Oh} para simplificar essas funções
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge
+  Estamos preocupados apenas com os limites \textbf{superior} e \textbf{inferior}
+
+  Constantes \textbf{multiplicativas} são \textbf{ignoradas}
+
+  $f(n) = 2n$ é igual a $g(n) = n$
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge
+  \centering
+  $f(n) = O(g(n))$
+  \vfill
+  $f(n) = \Omega(g(n))$
+  \vfill
+  $f(n) = \Theta(g(n))$
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge
+  \centering
+  \only<1>{$3 n^2 - 100 n + 6 = O(n^2)$}
+  \only<2>{$3 n^2 - 100 n + 6 = \Omega(n^2)$}
+  \only<3>{$3 n^2 - 100 n + 6 = \Theta(n^2)$}
+  \vfill
+  \only<1>{$3 n^2 - 100 n + 6 = O(n^3)$}
+  \only<2>{$3 n^2 - 100 n + 6 \neq \Omega(n^3)$}
+  \only<3>{$3 n^2 - 100 n + 6 \neq \Theta(n^3)$}
+  \vfill
+  \only<1>{$3 n^2 - 100 n + 6 \neq O(n)$}
+  \only<2>{$3 n^2 - 100 n + 6 = \Omega(n)$}
+  \only<3>{$3 n^2 - 100 n + 6 \neq \Theta(n)$}
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge
+  \centering
+  $2^{n + 1} = \Theta(2^n)?$
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge
+  \centering
+  $(x + y)^2 = O(x^2 + y^2)?$
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge \textbf{Relações de dominância}
+
+  \vfill
+
+  \Large As funções são separadas em classes
+
+  \bigskip
+
+  $ f(n) = 0.34 n$ e $g(n) = 234234 n$ são ambas da classe $\Theta(n)$
+
+  \bigskip
+
+  Quando $f(n) = O(g(n))$ ou $g(n) = O(f(n))$ (mas não ambos), as classes são diferentes
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge Quando $f(n) = O(g(n))$, dizemos que \textbf{$g$ domina $f$} (ou $g >> f$)
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \Large
+  \begin{tabular}{ll}
+    Funções \textbf{constantes}, & $f(n) = 1$ \\
+    Funções \textbf{logarítmicas}, & $f(n) = \log{n}$ \\
+    Funções \textbf{lineares}, & $f(n) = n$ \\
+    Funções \textbf{superlineares}, & $f(n) = n \log{n}$ \\
+    Funções \textbf{quadráticas}, & $f(n) = n^2$ \\
+    Funções \textbf{cúbicas}, & $f(n) = n^3$ \\
+    Funções \textbf{exponenciais}, & $f(n) = c^n$ \\
+    Funções \textbf{fatoriais}, & $f(n) = n!$
+  \end{tabular}
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \large
+  \centering
+  $n! >> c^n >> n^3 >> n^2 >> n \log{n} >> n >> \log{n} >> 1$
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge \textbf{Adição}
+  \Large
+
+  \bigskip
+
+  $O(f(n)) + O(g(n)) \rightarrow O(max(f(n), g(n)))$
+
+  \bigskip
+
+  $\Omega(f(n)) + \Omega(g(n)) \rightarrow \Omega(max(f(n), g(n)))$
+
+  \bigskip
+
+  $\Theta(f(n)) + \Theta(g(n)) \rightarrow \Theta(max(f(n), g(n)))$
+
+  \bigskip
+
+  Ex.: $n^3 + n^2 + n + 1 = O(n^3)$
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge \textbf{Multiplicação por constante}
+  \Large
+
+  \bigskip
+
+  $O(c \times f(n)) \rightarrow O(f(n))$
+
+  \bigskip
+
+  $\Omega(c \times f(n)) \rightarrow \Omega(f(n))$
+
+  \bigskip
+
+  $\Theta(c \times f(n)) \rightarrow \Theta(f(n))$
+
+  \bigskip
+
+  Obs.: $c > 0$
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge \textbf{Multiplicação}
+  \Large
+
+  \bigskip
+
+  $O(f(n)) * O(g(n)) \rightarrow O(f(n) * g(n))$
+
+  \bigskip
+
+  $\Omega(f(n)) * \Omega(g(n)) \rightarrow \Omega(f(n) * g(n))$
+
+  \bigskip
+
+  $\Theta(f(n)) * \Theta(g(n)) \rightarrow \Theta(f(n) * g(n))$
+\end{frame}
+
+
+\begin{frame}{Análise de Algoritmos}
+  \Large Mostre que se $f(n) = O(g(n))$ e $g(n) = O(h(n))$, então $f(n) = O(h(n))$
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge \textbf{Exemplos}
+
+  \begin{itemize}
+    \item \textit{selection sort}
+    \item \textit{insertion sort}
+    \item busca em strings
+    \item multiplicação de matrizes
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge \textbf{Logaritmos}
+
+  \Large
+  \begin{itemize}
+    \item Busca binária
+    \item Árvores
+    \item Bits
+    \item Exponenciação
+    \item Exponenciação rápida
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge \textbf{Propriedades dos Logaritmos}
+
+  \Large
+  \begin{itemize}
+    \item Bases principais: 2, $e$, 10
+    \item $\log_a (xy) = \log_a (x) + \log_a (y)$
+    \item $\log_a b = \frac{\log_c b}{\log_c a}$
+    \item A base do logaritmo não tem muita influência no crescimento da função
+    \item O logaritmo de qualquer função polinomial é $\Theta(\log n)$
+    \item log(fatorial) é uma soma
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Análise de Algoritmos}
+  \huge Quantas buscas devem ser feitas na lista telefônica se dividirmos ela em $1/3$ e $2/3$?
+\end{frame}
+
+\end{document}
