@@ -1,0 +1,555 @@
+\documentclass[10pt]{beamer}
+
+\input{general/packages.tex}
+\input{general/configs.tex}
+\input{general/info.tex}
+
+\subtitle{Aula 3}
+\date{08 de novembro de 2019}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Tipos abstratos de dados}
+  \vfill
+  \begin{itemize}
+    \item Contêineres (filas, pilhas)
+    \item Dicionários
+    \item Filas de prioridade
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  Tipos abstratos de dados são implementados com \textbf{estruturas de dados}
+
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Estruturas contíguas $\times$ ligadas}
+  \vfill
+  \large
+  \begin{columns}
+    \begin{column}{0.49\textwidth}
+      \begin{itemize}
+        \item \textbf{Único} pedaço de memória
+        \item Vetores (array 1D)
+        \item Matrizes (array 2D)
+        \item Heaps
+        \item Tabelas de dispersão (\textit{hash tables})
+      \end{itemize}
+
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{itemize}
+        \item \textbf{Vários} pedaços de memória conectados por \textbf{ponteiros}
+        \item Listas
+        \item Árvores
+        \item Listas de adjacência (grafos)
+      \end{itemize}
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Arrays}
+  \vfill
+  \LARGE
+  Estruturas de \textbf{dados com tamanho fixo} onde cada elemento pode ser acessado de forma \textbf{eficicente} pelo seu \textbf{índice} (ou \textbf{endereço})
+
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Vantagens de um array}
+  \vfill
+  \Large
+  \begin{itemize}
+    \item Acesso aos elementos é $O(1)$, dado o índice
+    \item Eficiência de espaço: composto puramente de dados com o mesmo tamanho
+    \item Continuidade física dos dados na memória
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Principal desvantagem de um array: tamanho fixo}
+  \vfill
+  \Large
+  Possíveis soluções
+  \begin{itemize}
+    \item Alocar um array grande o suficiente (possível desperdício de memória)
+    \item Arrays \textbf{dinâmicos} (ex.)
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Ponteiros e estruturas ligadas}
+  \vfill
+  \Large
+  \begin{itemize}
+    \item Representam \textbf{endereços} na memória
+    \item Oferecem maior \textbf{flexibilidade}
+    \item Em C: operadores \textbf{\texttt{*}} e \textbf{\&}, valor \textbf{\texttt{NULL}}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Estruturas de Dados}
+  \huge
+  \textbf{Implementação de uma lista}
+  \vfill
+  \large
+  \begin{lstlisting}[language=C]
+typedef struct lista {
+  tipo dado; // -> dados
+  Lista *prox; // -> ponteiro para o
+} Lista;       //    proximo elemento
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Características da lista ligada}
+  \vfill
+  \large
+  \begin{itemize}
+    \item Cada elemento armazena um ou mais dados
+    \item Cada elemento possui também um \textbf{ponteiro para o próximo elemento} (ocupa mais espaço na memória)
+    \item É necessário sempre o \textbf{ponteiro para o primeiro elemento} da lista
+    \item Estrutura ligada mais simples
+    \item Pode ser \textbf{duplamente} encadeada (ponteiros para o anterior e o próximo, ocupa mais espaço)
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Estruturas de Dados}
+  \huge
+  \textbf{Busca em uma lista}
+  \vfill
+  \large
+  \begin{lstlisting}[language=C]
+Lista *busca_lista(Lista *l, tipo x) {
+  if (l == NULL) // lista vazia
+    return(NULL);
+
+  if (l->dado == x) // dado encontrado
+    return(l);
+  else // dado nao encontrado
+    return(busca_lista(l->prox, x));
+}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Estruturas de Dados}
+  \huge
+  \textbf{Inserção em uma lista}
+  \vfill
+  \large
+  \begin{lstlisting}[language=C]
+void inserir_lista(Lista **l, tipo x) {
+  Lista *p; // ponteiro auxiliar
+
+  p = malloc(sizeof(Lista));
+  p->dado = x;
+  p->prox = *l;
+  *l = p;
+}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Estruturas de Dados}
+  \huge
+  \textbf{Remoção em uma lista}
+  \vfill
+  \large
+  \begin{lstlisting}[language=C]
+Lista *anterior(Lista *l, tipo x) {
+  if ((l == NULL) || (l->prox == NULL)) {
+    printf("Nao encontrado");
+    return(NULL);
+  }
+  if ((l->prox)->dado == x)
+    return(l);
+  else
+    return(anterior(l->prox, x));
+}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Estruturas de Dados}
+  \huge
+  \textbf{Remoção em uma lista}
+  \vfill
+  \large
+  \begin{lstlisting}[language=C]
+void remover_lista(Lista **l, tipo x) {
+  Lista *p, *pred;
+  p = busca_lista(*l,x);
+  if (p != NULL) {
+    pred = anterior(*l,x);
+    if (pred == NULL)
+      *l = p->prox;
+    else
+      pred->prox = p->prox;
+    free(p);
+  }
+}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Vantagens das listas}
+  \vfill
+  \large
+  \begin{itemize}
+    \item Uma lista nunca vai "estourar" a memória, a não ser que a memória do PC acabe
+    \item Inserção e remoção são mais simples
+    \item Gerenciamento de ponteiros é mais simples em larga escala
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Desvantagens das listas}
+  \vfill
+  \large
+  \begin{itemize}
+    \item Precisam de mais espaço para os ponteiros
+    \item Acesso aleatório não é eficiente
+    \item Memória espalhada diminui a performance
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Listas e arrays são estruturas \alert{recursivas}}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Pilhas (stacks)}
+  \vfill
+  \Large
+  \begin{itemize}
+    \item \textit{last-in, first-out} (LIFO)
+    \item Simples de implementar
+    \item Eficientes
+    \item Ordem não importa
+    \item Operações: \texttt{push(p, x)} e \texttt{pop(p)}
+    \item Aparecem em algoritmos recursivos
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Filas (queues)}
+  \vfill
+  \Large
+  \begin{itemize}
+    \item \textit{first-in, first-out} (FIFO)
+    \item Complicadas de implementar
+    \item Minimizam o tempo máximo de espera
+    \item Ordem importa
+    \item Operações: \texttt{enqueue(f, x)} e \texttt{dequeue(p)}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Pilhas e filas podem ser implementadas tanto com arrays quanto com listas}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Dicionários}
+  \vfill
+  \Large
+  Armazenam um conjunto de \textbf{dados}, indexados por chaves.
+  \vfill
+  \large
+  \texttt{\{"chave1": dado1, "chave2": dado2, $\cdots$ \}}
+
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Operações com dicionários}
+  \vfill
+  \Large
+  \begin{itemize}
+    \item \texttt{Busca(D, c)}
+    \item \texttt{Inserção(D, x)}
+    \item \texttt{Remoção(D, x)}
+    \item \texttt{Máx(D) / Mín(D)}
+    \item \texttt{Anterior(D, k) / Próximo(D, k)}
+  \end{itemize}
+  \vfill
+  \large
+  Exemplo: lista de elementos únicos
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Exercício: implementação de dicionário com array}
+  \vfill
+  Array ordenado $\times$ não ordenado
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \begin{center}
+    \large
+    \begin{tabular}{@{}lll@{}}
+      \toprule
+      \textbf{Operação} & \textbf{Array não ordenado} & \textbf{Array ordenado} \\
+      \midrule
+      Busca & \onslide<2->{$O(n)$} & \onslide<9->{$O(\log n)$} \\
+      Inserção & \onslide<3->{$O(1)$} & \onslide<10->{$O(n)$} \\
+      Remoção & \onslide<4->{$O(1)*$} & \onslide<11->{$O(n)$} \\
+      Próximo & \onslide<5->{$O(n)$} & \onslide<12->{$O(1)$} \\
+      Anterior & \onslide<6->{$O(n)$} & \onslide<13->{$O(1)$} \\
+      Mín & \onslide<7->{$O(n)$} & \onslide<14->{$O(1)$} \\
+      Máx & \onslide<8->{$O(n)$} & \onslide<15->{$O(1)$} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \vfill
+  \large
+  Assumindo que o número \textbf{$n$} de elementos no array é dado
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Exercício: implementação de dicionário com lista}
+  \vfill
+  \Large
+  Lista simplesmente ligada ordenada $\times$ lista simplesmente ligada não ordenada $\times$ lista duplamente ligada ordenada $\times$ lista duplamente ligada não ordenada
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \begin{center}
+    \begin{tabular}{@{}lllll@{}}
+      \toprule
+      \textbf{Operação} & \textbf{Simp. não ord.} & \textbf{Dup. não ord.} & \textbf{Simp. ord.} & \textbf{Dup. ord.} \\
+      \midrule
+      Busca & \onslide<2->{$O(n)$} & \onslide<9->{$O(n)$} & \onslide<16->{$O(n)$} & \onslide<23->{$O(n)$} \\
+      Inserção & \onslide<3->{$O(1)$} & \onslide<10->{$O(1)$} & \onslide<17->{$O(n)$} & \onslide<24->{$O(n)$} \\
+      Remoção & \onslide<4->{$O(n)*$} & \onslide<11->{$O(1)$} & \onslide<18->{$O(n)*$} & \onslide<25->{$O(1)$} \\
+      Próximo & \onslide<5->{$O(n)$} & \onslide<12->{$O(n)$} & \onslide<19->{$O(1)$} & \onslide<26->{$O(1)$} \\
+      Anterior & \onslide<6->{$O(n)$} & \onslide<13->{$O(n)$} & \onslide<20->{$O(n)*$} & \onslide<27->{$O(1)$} \\
+      Mín & \onslide<7->{$O(n)$} & \onslide<14->{$O(n)$} & \onslide<21->{$O(1)$} & \onslide<28->{$O(1)$} \\
+      Máx & \onslide<8->{$O(n)$} & \onslide<15->{$O(n)$} & \onslide<22->{$O(1)*$} & \onslide<29->{$O(1)$} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Árvores binárias de busca}
+  \vfill
+  \large
+  \begin{itemize}
+    \item Até agora: busca rápida ou atualização flexível, não ambas
+    \item Busca binária requer acesso aos nós medianos \textbf{acima} e \textbf{abaixo} do que se procura
+    \item Árvore binária de busca é uma "lista ligada" com dois ponteiros por elemento
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Definição recursiva de árvore binária}
+  \vfill
+  \Large
+  \begin{enumerate}
+    \item Vazia, ou
+    \item Elemento chamado de \textbf{raiz} com duas outras árvores binárias, chamadas \textbf{subárvores} da \textbf{esquerda} e da \textbf{direita}
+  \end{enumerate}
+  \vfill
+  \large
+  A ordem dos elementos importa
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Em uma árvore binária \alert{de busca}, todos os nós na \alert{subárvore da esquerda são menores} que a raiz e todos os nós na \alert{subárvore da direita são maiores} que a raiz}
+  \vfill
+  \large
+  Com uma árvore binária de \textbf{$n$} elementos e um conjunto de \textbf{$n$} valores, só existe \textbf{uma maneira} de criar uma árvore binária de busca
+\end{frame}
+
+\begin{frame}[fragile]{Estruturas de Dados}
+  \huge
+  \textbf{Implementação de uma árvore}
+  \vfill
+  \large
+  \begin{lstlisting}[language=C]
+typedef struct arvore {
+  tipo dado;
+  struct Arvore *pai; // opcional
+  struct Arvore *esquerda;
+  struct Arvore *direita;
+} Arvore;
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Operações básicas}
+  \vfill
+  \LARGE
+  \begin{itemize}
+    \item Busca
+    \item Travessia
+    \item Inserção
+    \item Remoção
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Estruturas de Dados}
+  \huge
+  \textbf{Busca em uma árvore}
+  \vfill
+  \large
+  \begin{lstlisting}[language=C]
+Arvore *busca_arvore(Arvore *l, tipo x) {
+  if (l == NULL) return(NULL);
+  if (l->dado == x) return(l);
+  if (x < l->dado)
+    return(busca_arvore(l->esquerda, x));
+  else
+    return(busca_arvore(l->direita, x));
+}
+  \end{lstlisting}
+  \vfill
+  \large
+  Roda em tempo \textbf{$O(h)$}, onde \textbf{$h$} é a altura da árvore
+\end{frame}
+
+\begin{frame}[fragile]{Estruturas de Dados}
+  \huge
+  \textbf{Mínimo/máximo em uma árvore}
+  \vfill
+  \large
+  \begin{lstlisting}[language=C]
+Arvore *minimo(Arvore *t) {
+  Arvore *min; // ponteiro auxiliar
+  if (t == NULL) return(NULL);
+  min = t;
+  while (min->esquerda != NULL)
+    min = min->esquerda;
+  return(min);
+}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Estruturas de Dados}
+  \huge
+  \textbf{Atravessando uma árvore}
+  \vfill
+  \large
+  \begin{lstlisting}[language=C]
+void atravessar_arvore(Arvore *l) {
+  if (l != NULL) {
+    atravessar_arvore(l->esquerda);
+    processar_elemento(l->dado);
+    atravessar_arvore(l->direita);
+  }
+}
+  \end{lstlisting}
+  \vfill
+  \large
+  A travessia ocorre em \textbf{ordem ascendente} dos dados, em um tempo \textbf{$O(n)$} (cada um dos \textbf{$n$} elementos é processado uma vez)
+\end{frame}
+
+\begin{frame}[fragile]{Estruturas de Dados}
+  \huge
+  \textbf{Inserção em uma árvore}
+  \vfill
+  \LARGE
+  Realizada no ponto onde a busca pelo elemento que se deseja inserir falha (encontra um elemento \texttt{\textbf{NULL}})
+  \vfill
+  \large
+  Roda em tempo \textbf{$O(h)$}, onde \textbf{$h$} é a altura da árvore
+\end{frame}
+
+\begin{frame}[fragile]{Estruturas de Dados}
+  \vfill
+  \begin{lstlisting}[language=C]
+insere_arvore(Arvore **l, tipo x, Arvore *pai) {
+  Arvore *p; // ponteiro auxiliar
+  if (*l == NULL) {
+    p = malloc(sizeof(Arvore)); // alocacao
+    p->dado = x;
+    p->esquerda = p->direita = NULL;
+    p->pai = pai;
+    *l = p; // conectando a arvore
+    return;
+  }
+  if (x < (*l)->dado)
+    insere_arvore(&((*l)->esquerda), x, *l);
+  else
+    insere_arvore(&((*l)->direita), x, *l);
+}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Remoção em uma árvore}
+  \vfill
+  \LARGE
+  Três possibilidades
+  \begin{enumerate}
+    \item Elemento não tem filhos
+    \item Elemento tem um filho
+    \item Elemento tem dois filhos (complexo)
+  \end{enumerate}
+  \vfill
+  \large
+  Roda em tempo \textbf{$O(h)$}, onde \textbf{$h$} é a altura da árvore
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Pior caso}
+  \vfill
+  Altura \textbf{$h$} é igual ao número \textbf{$n$} de elementos, árvore vira uma lista encadeada e todos os algoritmos rodam no tempo \textbf{$O(n)$}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Melhor caso}
+  \vfill
+  A árvore é \textbf{perfeitamente balanceada} (dois filhos por elemento), a altura é igual a \textbf{$\lceil \log_2 n \rceil$} e todos os algoritmos rodam no tempo \textbf{$O(\log_2 n)$}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Na \alert{média}, existe uma \alert{alta probabilidade} de a árvore ter altura \textbf{$O(\log_2 n)$}}
+\end{frame}
+
+\begin{frame}{Estruturas de Dados}
+  \huge
+  \textbf{Exercício: lendo $n$ números e imprimindo na ordem com um dicionário balanceado}
+  \vfill
+  \large
+  \begin{enumerate}
+    \item Usando \texttt{inserção} e \texttt{travessia}
+    \item Usando \texttt{inserção}, \texttt{mínimo} e \texttt{próximo}
+    \item Usando \texttt{inserção}, \texttt{mínimo} e \texttt{remoção}
+  \end{enumerate}
+\end{frame}
+\end{document}
