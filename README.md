@@ -83,10 +83,10 @@
 | 06     | 01/11/2019     | Modelo RAM, notação big-oh e exercícios                                           |
 | 07     | 08/11/2019     | Estruturas de dados (arrays, listas) e TADs (pilhas, filas, dicionários, árvores) |
 |        | 15/11/2019     | Feriado                                                                           |
-| 08     | 22/11/2019     | Possível AB1                                                                      |
+| 08     | 22/11/2019     | Busca e ordenação (sem slides)                                                    |
 | 09     | 29/11/2019     |                                                                                   |
 | 10     | 06/12/2019     |                                                                                   |
-| 11     | 13/12/2019     |                                                                                   |
+| 11     | 13/12/2019     | AB1                                                                               |
 | 12     | 20/12/2019     |                                                                                   |
 |        | 27/12/2019     | Recesso                                                                           |
 |        | 03/01/2020     | Recesso                                                                           |
