@@ -84,7 +84,7 @@
 | 07     | 08/11/2019     | Estruturas de dados (arrays, listas) e TADs (pilhas, filas, dicionários, árvores) |
 |        | 15/11/2019     | Feriado                                                                           |
 | 08     | 22/11/2019     | Busca e ordenação (sem slides)                                                    |
-| 09     | 29/11/2019     |                                                                                   |
+| 09     | 29/11/2019     | Exercícios, aplicações de busca binária (sem slides)                              |
 | 10     | 06/12/2019     |                                                                                   |
 | 11     | 13/12/2019     | AB1                                                                               |
 | 12     | 20/12/2019     |                                                                                   |
