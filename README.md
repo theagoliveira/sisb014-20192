@@ -85,7 +85,7 @@
 |        | 15/11/2019     | Feriado                                                                           |
 | 08     | 22/11/2019     | Busca e ordenação (sem slides)                                                    |
 | 09     | 29/11/2019     | Exercícios, aplicações de busca binária (sem slides)                              |
-| 10     | 06/12/2019     |                                                                                   |
+| 10     | 06/12/2019     | Grafos, BFS, exercícios                                                           |
 | 11     | 13/12/2019     | Apresentação de exercícios e desafios (AB1)                                       |
 | 12     | 20/12/2019     |                                                                                   |
 |        | 27/12/2019     | Recesso                                                                           |

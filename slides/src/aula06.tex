@@ -1,0 +1,305 @@
+\documentclass[10pt]{beamer}
+
+\input{general/packages.tex}
+\input{general/configs.tex}
+\input{general/info.tex}
+
+\subtitle{Aula 6}
+\date{6 de dezembro de 2019}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Grafos}
+  \huge
+  \textbf{Representação abstrata para descrever:}
+  \vfill
+  \Large
+  \begin{itemize}
+    \item Sistemas de transporte
+    \item Interações humanas
+    \item Redes de telecomunicações
+  \end{itemize}
+  \vfill
+  \large
+  Uma mesma definição serve para modelar várias estruturas
+\end{frame}
+
+\begin{frame}{Grafos}
+  \Huge
+  \centering
+  $G = (V, E)$
+  \vfill
+  \LARGE
+  \[
+    \left\{
+      \begin{array}{ll}
+        V = & \text{conjunto de vértices}\\
+        E = & \text{conjunto de pares de vértices} \\
+            & \text{ou arestas}
+      \end{array}
+    \right.
+  \]
+\end{frame}
+
+\setbeamertemplate{frame footer}{Figura 5.1, p. 145 (PDF: p. 157)}
+\begin{frame}{Grafos}
+  \Large
+  Grafos podem modelar essencialmente \textbf{qualquer} relação
+  \vfill
+  \large
+  \begin{itemize}
+    \item Redes de rodovias, onde os vértices são cidades e as arestas são as estradas
+    \item Circuitos elétricos, onde os vértices são as junções e as arestas são os componentes
+    \item Código-fonte, onde os vértices são as linhas de código e as arestas representam o fluxo entre elas
+    \item Interações humanas, onde os vértices são as pessoas e as arestas representam conexões
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{frame footer}{}
+
+\begin{frame}{Grafos}
+  \huge
+  A chave para a solução de muitos problemas de algoritmos está em interpretá-los \textbf{em termos de grafos}
+  \vfill
+  \large
+  ``Linguagem'' para descrever propriedades das relações (problemas complexos $\rightarrow$ descrição e soluções simples em termos de grafos)
+\end{frame}
+
+\begin{frame}{Grafos}
+  \Large
+  \begin{itemize}
+    \item Criar novos algoritmos de grafos é uma \textbf{tarefa complexa}
+    \item Melhor forma: modelar o problema de forma que um \textbf{algoritmo já existente} possa ser utilizado
+    \item É importante se familiarizar com problemas de algoritmos com grafos (cada problema tem um algortimo mais adequado)
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{frame footer}{Figura 5.2, p. 147 (PDF: p. 158)}
+\begin{frame}{Tipos de Grafos}
+  \vfill
+  \centering
+  \huge \textbf{Dirigido $\times$ Não-dirigido}
+  \vfill
+  \raggedright
+  \large
+  \begin{itemize}
+    \item Não-dirigido: para um grafo $G = (V, E)$, a aresta $(x, y) \in E$ implica $(y, x) \in E$
+    \item Exemplo: rodovias $\times$ ruas
+    \item Maioria dos grafos de interesse teórico são não-dirigidos
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tipos de Grafos}
+  \vfill
+  \centering
+  \huge \textbf{Ponderado $\times$ Não-ponderado}
+  \vfill
+  \raggedright
+  \large
+  \begin{itemize}
+    \item Em um grafo ponderado, cada aresta possui um valor numérico associado chamado de peso (pode introduzir um cálculo de custo)
+    \item Exemplo: rodovias
+    \item Exemplo: caminho mais curto
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tipos de Grafos}
+  \vfill
+  \centering
+  \huge \textbf{Simples $\times$ Multigrafo}
+  \vfill
+  \raggedright
+  \large
+  \begin{itemize}
+    \item Um grafo simples não possui laços ou múltiplas arestas conectando os mesmos vértices
+    \item Essas conexões requerem um cuidado especial na hora da implementação de um algoritmo
+    \item Em geral, ``grafo'' = ``grafo simples''
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tipos de Grafos}
+  \vfill
+  \centering
+  \huge \textbf{Esparso $\times$ Denso}
+  \vfill
+  \raggedright
+  \large
+  \begin{itemize}
+    \item Definição vaga
+    \item Em geral, os grafos esparsos possuem uma quantidade de arestas proporcional a $V$ e os grafos densos possuem uma quantidade proporcional a $V^2$
+    \item Exemplos: ruas e circuitos
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tipos de Grafos}
+  \vfill
+  \centering
+  \huge \textbf{Cíclico $\times$ Acíclico}
+  \vfill
+  \raggedright
+  \large
+  \begin{itemize}
+    \item Um grafo acíclico não contém nenhum ciclo
+    \item Exemplo: árvores e DAGs (agendamento)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tipos de Grafos}
+  \vfill
+  \centering
+  \huge \textbf{Embutido $\times$ Topológico}
+  \vfill
+  \raggedright
+  \large
+  \begin{itemize}
+    \item Qualquer grafo para o qual são atribuídas posições geométricas aos vértices e arestas é um grafo embutido
+    \item Um grafo topológico é definido pela ``regra'' subjacente
+    \item Exemplos: caixeiro-viajante, grade de pontos
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tipos de Grafos}
+  \vfill
+  \centering
+  \huge \textbf{Implícito $\times$ Explícito}
+  \vfill
+  \raggedright
+  \large
+  \begin{itemize}
+    \item Um grafo implícito é construído a medida que vai sendo utilizado
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tipos de Grafos}
+  \vfill
+  \centering
+  \huge \textbf{Rotulado $\times$ Não-rotulado}
+  \vfill
+  \raggedright
+  \large
+  \begin{itemize}
+    \item Cada vértice em um grafo rotulado possui um nome ou identificador único, para distinguí-lo de todos os outros vértices
+    \item Exemplo: cidades
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{frame footer}{}
+
+\setbeamertemplate{frame footer}{Figura 5.3, p. 149 (PDF: p. 161)}
+\begin{frame}{Grafo da amizade}
+  \LARGE
+  \begin{itemize}
+    \item Exemplo de modelagem
+    \item Vértices: pessoas
+    \item Arestas: relação de amizade
+    \item Esses grafos são chamados de redes sociais
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Grafo da amizade}
+  \huge
+  \textbf{Direção}: se eu sou seu amigo, isso significa que você é meu amigo? (outro exemplo: grafo de ``ouvir falar'')
+\end{frame}
+
+\begin{frame}{Grafo da amizade}
+  \huge
+  \textbf{Peso}: o quão próximo você é do seu amigo?
+\end{frame}
+
+\begin{frame}{Grafo da amizade}
+  \huge
+  \textbf{Simplicidade}: eu sou meu próprio amigo? (multigrafo: diferentes relações de amizade)
+\end{frame}
+
+\begin{frame}{Grafo da amizade}
+  \huge
+  \textbf{Densidade}: quem tem mais amigos?
+\end{frame}
+
+\begin{frame}{Grafo da amizade}
+  \huge
+  \textbf{Geometria}: meus amigos moram perto de mim? (redes sociais requerem um grafo embutido)
+\end{frame}
+
+\begin{frame}{Grafo da amizade}
+  \huge
+  \textbf{Implícito/Explícito}: você também conhece aquela pessoa? (sites de redes sociais $\times$ vida real)
+\end{frame}
+
+\begin{frame}{Grafo da amizade}
+  \huge
+  \textbf{Rótulos}: você é um indivíduo ou parte de uma multidão? (em geral, estudo de redes sociais não se importa com nomes)
+  \vfill
+  \large
+\end{frame}
+\setbeamertemplate{frame footer}{}
+
+\begin{frame}{Estruturas de dados para grafos}
+  \huge
+  \begin{itemize}
+    \item Matriz de adjacência
+    \item Lista de adjacência
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Estruturas de dados para grafos}
+  \huge
+  \textbf{Matriz de adjacência}
+  \vfill
+  \large
+  Podemos representar um grafo $G$ com uma matriz $M$ de tamanho $n \times n$ (onde $n$ é o número de vértices), de forma que $M(i, j) = 1$ se a aresta $(i, j)$ é parte de $G$ e $M(i, j) = 0$, caso contrário
+
+  Essa estrutura permite uma rápida resposta para a pergunta ``a aresta $(i, j)$ está presente em $G$?'', e também uma rápida atualização do grafo (inserção e remoção de arestas)
+
+  Pode desperdiçar espaço em um gráfico com muitos vértices e poucas arestas
+\end{frame}
+
+\begin{frame}{Estruturas de dados para grafos}
+  \huge
+  \textbf{Lista de adjacência}
+  \vfill
+  \large
+  Grafos esparsos podem ser representado de forma mais eficiente com listas encadeadas, as quais armazenam os vértices vizinhos de um determinado vértice
+\end{frame}
+
+\begin{frame}{Estruturas de dados para grafos}
+  \huge
+  \textbf{Implementação da lista de adjacência}
+\end{frame}
+
+\begin{frame}{Atravessando um grafo}
+  \huge
+  \textbf{Problema: visitar cada aresta e cada vértice em um grafo de forma sistemática}
+\end{frame}
+
+\begin{frame}{Atravessando um grafo}
+  \huge
+  \textbf{Comparação: grafo e labirinto}
+  \vfill
+  \large
+  Um labirinto pode ser naturalmente representado por um grafo, onde os vértices denotam uma junção do labirinto e as arestas denotam os caminhos. Sendo assim, um algoritmo para atravessar um grafo deve ser poderoso o suficiente para nos tirar de um labirinto.
+\end{frame}
+
+\begin{frame}{Atravessando um grafo}
+  \huge
+  \textbf{Comparação: grafo e labirinto}
+  \vfill
+  \Large
+  \begin{itemize}
+    \item \textbf{Eficiência}: evitar visitar os mesmos lugares repetidamente
+    \item \textbf{Correção}: travessia sistemática que garanta a saída do labirinto, cada vértice e aresta devem ser visitados
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Atravessando um grafo}
+  \huge
+  \textbf{Idéia principal: categorizar cada vértice como}
+  \vfill
+  \Large
+  \begin{itemize}
+    \item Não descoberto: estado inicial
+    \item Descoberto: foi encontrado, mas suas arestas não foram checadas
+    \item Processado: foi encontrado e todas as suas arestas foram visitadas
+  \end{itemize}
+\end{frame}
+\end{document}
