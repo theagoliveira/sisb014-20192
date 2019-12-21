@@ -87,7 +87,7 @@
 | 09     | 29/11/2019     | Exercícios, aplicações de busca binária (sem slides)                              |
 | 10     | 06/12/2019     | Grafos, BFS, exercícios                                                           |
 | 11     | 13/12/2019     | Apresentação de exercícios e desafios (AB1), recap de grafos                      |
-| 12     | 20/12/2019     |                                                                                   |
+| 12     | 20/12/2019     | Aplicações de BFS, DFS, aplicações de DFS (encontrar ciclos)                      |
 |        | 27/12/2019     | Recesso                                                                           |
 |        | 03/01/2020     | Recesso                                                                           |
 |        | 10/01/2020     | Recesso                                                                           |
