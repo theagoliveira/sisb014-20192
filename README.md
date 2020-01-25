@@ -92,7 +92,7 @@
 |        | 03/01/2020     | Recesso                                                                           |
 |        | 10/01/2020     | Recesso                                                                           |
 |        | 17/01/2020     | Recesso                                                                           |
-| 13     | 24/01/2020     |                                                                                   |
+| 13     | 24/01/2020     | Recapitulação de grafos e aplicações da busca em profundidade (DFS)               |
 | 14     | 31/01/2020     |                                                                                   |
 | 15     | 07/02/2020     |                                                                                   |
 | 16     | 14/02/2020     | Possível AB2                                                                      |
