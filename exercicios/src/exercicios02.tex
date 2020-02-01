@@ -16,26 +16,70 @@
 \raggedright
 
 \setlength{\leftmargini}{0pt}
+
+\textbf{Para todas as questões, assuma que as listas de adjacência estão ordenadas por ordem crescente alfabética/numérica}.
+
 \begin{enumerate}
-  % BFS
-  \item Obtenha os valores de distância e parentesco para a execução do BFS no grafo dirigido a seguir, usando o vértice 3 como inicial.
+  % SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 5.31
+  \item Quais são as estruturas de dados utilizadas na BFS e na DFS?
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % BFS                                          %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Introduction to Algorithms, 3rd Edition -- 22.2-1
+  \item Obtenha os valores de distância e parentesco para a execução da BFS no grafo dirigido a seguir, usando o vértice 3 como inicial.
 
   \begin{center}
-    \includegraphics[width=.5\textwidth]{graph2.png}
+    \includegraphics[width=\textwidth]{graph2.png}
   \end{center}
 
-  \item Obtenha os valores de distância e parentesco para a execução do BFS no grafo não-dirigido a seguir, usando o vértice u como inicial.
+  % CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Introduction to Algorithms, 3rd Edition -- 22.2-2
+  \item Obtenha os valores de distância e parentesco para a execução da BFS no grafo não-dirigido a seguir, usando o vértice u como inicial.
 
   \begin{center}
-    \includegraphics[width=.5\textwidth]{graph3.png}
+    \includegraphics[width=\textwidth]{graph3.png}
   \end{center}
 
-  % ORDENAÇÃO TOPOLÓGICA
-  \item Faça a ordenação topológica do grafo a seguir
+  % CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Introduction to Algorithms, 3rd Edition -- 22.2-5
+  \item Usando a figura da questão anterior, mostre como diferenças na ordem interna de cada lista de adjacência podem alterar a árvore de parentesco gerada pela BFS.
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % DFS                                          %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Introduction to Algorithms, 3rd Edition -- Figure 22.5
+  \item Obtenha os valores de tempo e parentesco e as classificações dos vértices para a execução da DFS no grafos dirigidos a seguir. Use o vértice s como inicial para o primeiro grafo e assuma que os vértices são processados em ordem alfabética no segundo grafo.
+
+  \begin{center}
+    \includegraphics[width=\textwidth]{graph4.png}
+  \end{center}
+
+  \begin{center}
+    \includegraphics[width=\textwidth]{graph5.png}
+  \end{center}
+
+  % CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Introduction to Algorithms, 3rd Edition -- 22.3-3
+  \item Mostre a estrutura de parênteses gerada pela DFS para o grafo da questão 1.
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % ORDENAÇÃO TOPOLÓGICA                         %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Faça a ordenação topológica dos grafos a seguir
   \bigskip
 
+  % SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 5.2
   \begin{center}
-    \includegraphics[width=.5\textwidth]{graph1.png}
+    \includegraphics[width=\textwidth]{graph1.png}
   \end{center}
+
+  % CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Introduction to Algorithms, 3rd Edition -- 22.4-1
+  \begin{center}
+    \includegraphics[width=\textwidth]{graph6.png}
+  \end{center}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % COMPONENTES FORTEMENTE CONECTADOS            %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Introduction to Algorithms, 3rd Edition -- 22.5-2
+  \item Identifique os componentes fortemente conectados no segundo grafo da questão 5 e mostre o grafo acíclico resultante.
 \end{enumerate}
 \end{document}
