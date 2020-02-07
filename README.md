@@ -95,7 +95,7 @@
 | 13     | 24/01/2020     | Recapitulação de grafos e aplicações da busca em profundidade (DFS)               |
 | 14     | 31/01/2020     | Busca em profundidade (DFS) em grafos direcionados, exercícios                    |
 | 15     | 07/02/2020     |                                                                                   |
-| 16     | 14/02/2020     | Possível AB2                                                                      |
+| 16     | 14/02/2020     | AB2                                                                               |
 |        | 21/02/2020     | Reavaliação                                                                       |
 |        | 28/02/2020     | Prova Final                                                                       |
 
