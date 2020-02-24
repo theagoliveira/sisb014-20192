@@ -1,24 +1,23 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,10pt]{article}
 
 \input{packages.tex}
 \input{configs.tex}
 
-\title{Análise e Projeto de Algoritmos -- Exercícios 02 (Grafos)}
-\author{Prof. Thiago Cavalcante}
-\date{}
+\title{Exercícios 02 (Grafos)}
+\posttitle{\end{center}}
 
 \begin{document}
 
-\pagenumbering{gobble}
 \maketitle
 
-\sloppy
-\raggedright
+\emergencystretch 3em
 
+{\raggedright \textbf{Para todas as questões, assuma que as listas de adjacência estão ordenadas por ordem crescente alfabética/numérica}.}
+
+\bigskip
+
+\begin{multicols*}{2}
 \setlength{\leftmargini}{0pt}
-
-\textbf{Para todas as questões, assuma que as listas de adjacência estão ordenadas por ordem crescente alfabética/numérica}.
-
 \begin{enumerate}
   % SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 5.31
   \item Quais são as estruturas de dados utilizadas na BFS e na DFS? % Pilha e fila, respectivamente
@@ -38,7 +37,7 @@
   % -1  4 -1  5  3  3
 
   \begin{center}
-    \includegraphics[width=.8\textwidth]{graph2.png}
+    \includegraphics[width=.8\linewidth]{graph2.png}
   \end{center}
 
   % CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Introduction to Algorithms, 3rd Edition -- 22.2-2
@@ -54,7 +53,7 @@
   %  s  w  u -1  r  t  u  u
 
   \begin{center}
-    \includegraphics[width=\textwidth]{graph3.png}
+    \includegraphics[width=\linewidth]{graph3.png}
   \end{center}
 
   % CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Introduction to Algorithms, 3rd Edition -- 22.2-5
@@ -116,13 +115,12 @@
   %
   % (q (s (v (w  w) v) s) (t (x (z z) x) (y y) t) q) (r (u u) r)
 
-
   \begin{center}
-    \includegraphics[width=\textwidth]{graph4.png}
+    \includegraphics[width=\linewidth]{graph4.png}
   \end{center}
 
   \begin{center}
-    \includegraphics[width=\textwidth]{graph5.png}
+    \includegraphics[width=\linewidth]{graph5.png}
   \end{center}
 
   % CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Introduction to Algorithms, 3rd Edition -- 22.3-3
@@ -153,13 +151,13 @@
 
   % SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 5.2
   \begin{center}
-    \includegraphics[width=\textwidth]{graph1.png}
+    \includegraphics[width=\linewidth]{graph1.png}
   \end{center}
   % H A B D E G I J C F
 
   % CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Introduction to Algorithms, 3rd Edition -- 22.4-1
   \begin{center}
-    \includegraphics[width=\textwidth]{graph6.png}
+    \includegraphics[width=\linewidth]{graph6.png}
   \end{center}
   % p n o s m r y v x w z u q t
 
@@ -173,4 +171,5 @@
   % svw |  \ |
   %     xz   u
 \end{enumerate}
+\end{multicols*}
 \end{document}
