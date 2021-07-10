@@ -8,6 +8,8 @@
 - [Livros sugeridos](#livros-sugeridos)
 - [Aulas](#aulas)
 - [Recursos](#recursos)
+  - [Estruturas de Dados e Algoritmos](#estruturas-de-dados-e-algoritmos)
+  - [Exercícios de Programação](#exercícios-de-programação)
 
 ## Ementa
 
@@ -97,13 +99,18 @@
 | 15     | 07/02/2020     | Árvores geradoras mínimas, algoritmos de Prim e Kruskal e exercícios              |
 | 16     | 14/02/2020     | AB2                                                                               |
 |        | 21/02/2020     | Reavaliação                                                                       |
-|        | 28/02/2020     | Prova Final                                                                       |
+|        | 27/02/2020     | Prova Final                                                                       |
 
 ## Recursos
 
-- [VisuAlgo](https://visualgo.net/en) - visualização de estruturas de dados e algoritmos através de animações
+### Estruturas de Dados e Algoritmos
+
 - [Data Structure Visualizations (David Galles, University of San Francisco)](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+- [House of Graphs](https://hog.grinvin.org/)
+- [VisuAlgo](https://visualgo.net/en) - visualização de estruturas de dados e algoritmos através de animações
+
+### Exercícios de Programação
+
 - [Leetcode](https://leetcode.com/)
 - [HackerRank](https://www.hackerrank.com/)
 - [Online Judge](https://onlinejudge.org/)
-- [House of Graphs](https://hog.grinvin.org/)
