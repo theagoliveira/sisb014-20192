@@ -1,0 +1,107 @@
+\documentclass[a4paper,10pt]{article}
+
+\input{packages.tex}
+\input{configs.tex}
+
+\title{Lista 1}
+\posttitle{\end{center}}
+
+\begin{document}
+
+\maketitle
+
+\emergencystretch 3em
+
+\begin{multicols*}{2}
+\setlength{\leftmargini}{0pt}
+\begin{enumerate}
+  % SOURCES
+  % - SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 1-16
+  \item  Prove por indução que $n^3 + 2n$ é divisível por 3 para todo $n \geq 0$ e que $13^n - 6^n$ é divisível por 7 para todo $n \geq 1$. \textit{Lembre-se que para aplicar o método da indução, você: 1. \textbf{mostra} que a afirmação é verdadeira para o menor número considerado no intervalo (nesse caso, $n = 0$ e $n = 1$, respectivamente); 2. \textbf{assume} que a afirmação é verdadeira para todos os valores menores ou iguais a um número qualquer $k$; 3. mostra, usando a suposição do passo anterior, que a afirmação \textbf{continua valendo} para $k + 1$.}
+
+  % SOURCES
+  % - SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 1-18
+  \item  Prove por indução que a soma dos cubos dos primeiros $n$ inteiros positivos é igual ao quadrado da soma desses inteiros, ou seja,
+
+  \begin{equation*}
+    \sum_{i = 1}^{n} i^3 = \left(\sum_{i = 1}^{n} i\right)^2
+  \end{equation*}
+
+  \textit{Lembre-se que}
+
+  \begin{equation*}
+    \sum_{i = 1}^{n} i = \frac{n (n+1)}{2}
+  \end{equation*}
+
+  % SOURCES
+  % - SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 1-25
+  \item Um algoritmo de ordenação leva 1 segundo para ordenar $n_1 = 1.000$ itens no seu computador. Quanto tempo ele vai levar para ordenar $n_2 = 10.000$ itens se o algoritmo tem um tempo de execução proporcional a:
+
+    \begin{enumerate}
+      \item $n^2$?
+      \item $n \log{n}$?
+    \end{enumerate}
+
+  % SOURCES
+  % - SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 2-9
+  \item Para cada par de funções $f(n)$ e $g(n)$ a seguir, determine se $f(n) = O(g(n))$, $g(n) = O(f(n))$, ou ambos.
+
+    \begin{enumerate}
+      \item $f(n) = (n^2 - n)/2$, $g(n) = 6n $
+      \item $f(n) = n + 2\sqrt{n}$, $g(n) = n^2 $
+      \item $f(n) = n\log{n}$, $g(n) = n\sqrt{n}/2 $
+      \item $f(n) = n + \log{n}$, $g(n) = \sqrt{n}$
+      \item $f(n) = 2(\log{n})^2$, $g(n) = \log{n} + 1$
+      \item $f(n) = 4n\log{n} + n$, $g(n) = (n^2 - n)/2$
+    \end{enumerate}
+
+    \textit{Lembre-se que os valores constantes podem ser ignorados e que existe uma \textbf{relação de dominância} entre as funções:}
+    \begin{align*}
+      n! & \gg c^n \gg n^3 \gg n^2 \gg n^{1 + \epsilon} \gg n \log{n} \gg \\
+      n & \gg \sqrt{n} \gg (\log{n})^2 \gg \log{n} \gg 1
+    \end{align*}
+
+    \textit{onde $f(n) \gg g(n)$ é o mesmo que $g(n) = O(f(n))$ ($f$ domina $g$).}
+
+  % SOURCES
+  % - SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 2-14
+  \item Prove que se $f_1(n) = \Omega(g_1(n))$ e $f_2(n) = \Omega(g_2(n))$, então $f_1(n) + f_2(n) = \Omega(g_1(n) + g_2(n))$.
+
+  \vfill\null
+  \columnbreak
+
+  % SOURCES
+  % - SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 2-35
+  \item Considere o código abaixo:
+
+    \begin{minted}{c}
+for i = 1 to n do
+  for j = i to 2 * i do
+    print "ufal"
+    \end{minted}
+
+  Expresse a quantidade de vezes que a palavra \textbf{ufal} é impressa na tela como um somatório e simplifique até chegar a uma fórmula. \textit{Use a fórmula da questão 2 para conseguir finalizar essa questão.}
+
+  % SOURCES
+  % - SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 3-7
+  \item Você tem acesso a um dicionário balanceado que realiza as operações  de busca, inserção, remoção, mínimo, máximo, sucessor e antecessor em um tempo $O(\log{n})$. Explique como você pode modificar as operações de \textbf{inserção} e \textbf{remoção}, de forma que elas continuem com o tempo logarítmico, mas que o \textbf{máximo} e \textbf{mínimo} agora sejam $O(1)$. \textit{Dica: você pode armazenar os valores máximo e mínimo em variáveis auxiliares que estão sempre à disposição sem a necessidade de uma busca (portanto, $O(1)$). No entanto, o que deve ser feito nas funções de inserção e remoção para garantir que esses valores estarão sempre atualizados? Pense em termos das operações do dicionário e não em termos de programação.}
+
+  % SOURCES
+  % - SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 4-6
+  \item Dados dois conjuntos $S_1$ e $S_2$, com $n$ elementos cada, e um número $x$, descreva um algoritmo $O(n\log{n})$ para encontrar um par de elementos, um de $S_1$ e um de $S_2$, cuja soma é igual a $x$. \textit{Lembre-se dos algoritmos de busca e ordenação e de seus respectivos tempos de execução.}
+
+  % SOURCES
+  % - SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 4-8
+  \item Dado um conjunto $S$ com $n$ números reais e um número real $x$, descreva um algoritmo que seja capaz de determinar se existem dois números em $S$ cuja soma é $x$.
+
+    \begin{enumerate}
+      \item Assuma que $S$ não está ordenado e dê um algoritmo de tempo $O(n \log{n})$.
+      \item Assuma que $S$ está ordenado e dê um algoritmo $O(n)$.
+    \end{enumerate}
+
+  % SOURCES
+  % - SKIENA, S. S. The Algorithm Design Manual, 2nd Edition -- 4-20
+  \item Descreva um algoritmo eficiente para reorganizar um \textit{array} de valores de forma que todos os números negativos precedam os números positivos (não necessariamente em ordem). Você não pode usar um \textit{array} auxiliar para guardar elementos. Qual é o tempo de execução do algoritmo? \textit{Dica: qual é a operação realizada na execução do algoritmo quicksort?}
+\end{enumerate}
+\end{multicols*}
+\end{document}

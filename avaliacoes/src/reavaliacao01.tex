@@ -1,0 +1,133 @@
+\documentclass[a4paper,10pt]{article}
+
+\input{packages.tex}
+\input{configs.tex}
+
+\title{Reavaliação}
+\posttitle{\end{center}}
+
+\begin{document}
+
+\maketitle
+
+\emergencystretch 3em
+
+\input{recommendations.tex}
+
+NOME: \rule{.85\textwidth}{0.1mm}
+
+\begin{multicols*}{2}
+\setlength{\leftmargini}{0pt}
+\begin{enumerate}
+  \item (3,0 pt) Use o princípio da indução para provar as afirmações a seguir.
+
+  \begin{enumerate}
+    \item (0,8 pt) $ 6^{n} + 4 $ é divisível por $ 5 $, para todo $ n \geq 0 $.
+    \item (1,0 pt) $ 5^{2n+1} + 2^{2n+1} $ é divisível por $ 7 $, para todo $ n \geq 0 $.
+    \item (1,2 pt)
+    \[
+      \sum_{i=1}^{n} \frac{1}{i(i + 1)} = \frac{n}{n + 1},
+    \]
+
+    para todo $ n \geq 1 $.
+  \end{enumerate}
+
+  \item (2,0 pt) Considere o pseudocódigo abaixo:
+
+  \begin{minted}{c}
+Para i de 0 até n - 1:
+  Para j de i + 1 até n - 1:
+    Comando
+  \end{minted}
+
+    \begin{enumerate}
+      \item (0,5 pt) Expresse como um somatório a quantidade de vezes que a linha \texttt{Comando} é executada.
+      % \sum_{i = 0}^{n - 1} \sum_{j = i + 1}^{n - 1} 1
+      \item (1,0 pt) Simplifique o somatório até chegar a uma fórmula em função de n. Para isso, use a expressão abaixo:
+      \[
+        \sum_{i = 0}^{n - 1} i = \frac{n(n - 1)}{2}
+      \]
+      % \frac{n(n - 1)}{2}
+
+      \item (0,5 pt) De acordo a fórmula, qual é o tempo de execução de pior caso em notação Big-Oh?
+      % O(n^2)
+    \end{enumerate}
+
+  \item (1,5 pt) Ordene as funções a seguir por sua dominância, da mais dominante para a menos dominante:
+
+  \begin{itemize}[noitemsep]
+    \item $ n^3 $
+    \item $ n $
+    \item $ \sqrt{n} $
+    \item $ n \log{n} $
+    \item $ \log{n} $
+    \item $ n^2 $
+    \item $ n! $
+    \item $ c^n $
+    \item $ 1 $
+  \end{itemize}
+  % n! >> c^n >> n^3 >> n^2 >> n \log{n} >> n >> \sqrt{n} >> \log{n} >> 1
+
+  \item (1,5 pt) Mostre, usando as definições de $ O(f(n)) $ e $ \Omega(f(n)) $ que:
+
+  \begin{enumerate}
+    \item Se $ f(n) = O(g(n)) $ e $ g(n) = O(h(n)) $, então $ f(n) = O(h(n)) $
+    % f(n)     <= c_1 g(n)
+    % g(n)     <= c_2 h(n)
+    % c_1 g(n) <= c_1 c_2 h(n)
+    % f(n)     <= c_1 c_2 h(n)
+    % f(n)     <= c_3 h(n), c_3 = c_1 c_2
+    \item Se $ f(n) = \Omega(g(n)) $, então $ g(n) = O(f(n)) $
+    % f(n) >= c g(n)
+    % (1/c) f(n) >= g(n)
+    % g(n) <= (1/c) f(n)
+    % g(n) <= c' f(n), c' = 1/c
+  \end{enumerate}
+
+  \vfill\null
+  \columnbreak
+
+  \item (1,0 pt) Relacione cada complexidade de tempo com uma operação em um algoritmo.
+
+  \begin{enumerate}
+    \item $ O(n^2) $
+    \item $ O(1) $
+    \item $ O(n!) $
+    \item $ O(\log{n}) $
+    \item $ O(n) $
+  \end{enumerate}
+
+  \begin{enumerate}
+    \item [(\textcolor{white}{c})] Percorrer um array do início ao fim
+    \item [(\textcolor{white}{a})] Extrair de um array um elemento de índice x
+    \item [(\textcolor{white}{d})] Percorrer uma matriz do início ao fim
+    \item [(\textcolor{white}{e})] Gerar todas as permutações de um conjunto de dados
+    \item [(\textcolor{white}{b})] Fazer uma busca binária em um array ordenado
+  \end{enumerate}
+  % (e)
+  % (b)
+  % (a)
+  % (c)
+  % (d)
+
+  \item (1,0 pt) Para cada par de funções, especifique se $ f(n) = O(g(n)) $ ou $ f(n) = \Omega(g(n)) $. Lembre-se das relações de dominância.
+
+  \bigskip
+
+  \setlength{\tabcolsep}{2pt}
+
+  \begin{tabular}{@{\hskip 2mm}lll}
+    (a) & $ f(n) = \sqrt{n}, $ & $ g(n) = \log{(n^2)} $ \\[0.4em]
+    (b) & $ f(n) = 6n^2, $ & $ g(n) = n^2 \log{n} $ \\[0.4em]
+    (c) & $ f(n) = n \log{n} + n, $ & $ g(n) = \log{n} $ \\[0.4em]
+    (d) & $ f(n) = 10 n^2, $ & $ g(n) = 2^n $ \\[0.4em]
+    (e) & $ f(n) = (\log{n})^2, $ & $ g(n) = \log{n} $
+  \end{tabular}
+  % Omega
+  % O
+  % Omega
+  % O
+  % Omega
+\end{enumerate}
+\end{multicols*}
+\end{document}
